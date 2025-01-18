@@ -42,43 +42,44 @@
 
     <script>
         function addToCart(productId, event) {
-            event.preventDefault(); // Prevent default behavior
-    
+            event.preventDefault(); // Mencegah default behavior
+
             fetch(`/cart/add/${productId}`, {
                 method: 'POST',
                 headers: {
                     'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json', // Ensure the server knows we expect JSON
+                    'Content-Type': 'application/json'
                 }
-            })
-            .then(response => {
-                if (!response.ok) {
-                    // If the response is not OK, parse the error JSON
-                    return response.json().then(error => {
-                        throw new Error(error.message || 'Failed to add product to cart.');
+            }).then(response => {
+                if (response.ok) {
+                    // Tampilkan alert sukses
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success!',
+                        text: 'Product added to cart.',
+                        confirmButtonText: 'OK',
+                        customClass: {
+                            confirmButton: 'bg-blue-500 text-white px-4 py-2 rounded',
+                        },
+                    });
+                } else {
+                    // Tampilkan alert error
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'Failed to add product to cart.',
+                        confirmButtonText: 'OK',
+                        customClass: {
+                            confirmButton: 'bg-red-500 text-white px-4 py-2 rounded',
+                        },
                     });
                 }
-                return response.json();
-            })
-            .then(data => {
-                // Show success message
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Success!',
-                    text: data.message || 'Product added to cart.',
-                    confirmButtonText: 'OK',
-                    customClass: {
-                        confirmButton: 'bg-blue-500 text-white px-4 py-2 rounded',
-                    },
-                });
-            })
-            .catch(error => {
-                // Show error message
+            }).catch(error => {
+                console.error('Error:', error);
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: error.message || 'Something went wrong!',
+                    text: 'Something went wrong!',
                     confirmButtonText: 'OK',
                     customClass: {
                         confirmButton: 'bg-red-500 text-white px-4 py-2 rounded',
