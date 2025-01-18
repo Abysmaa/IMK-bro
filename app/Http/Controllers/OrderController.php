@@ -33,13 +33,22 @@ class OrderController extends Controller
 
         $cart = session()->get('cart', []);
 
+        // Check if the quantity exceeds the limit (e.g., 4)
+        if (isset($cart[$id]) && $cart[$id] >= 4) {
+            return response()->json(
+                [
+                    'success' => false,
+                    'message' => 'You cannot add more than 4 units of this product to the cart.',
+                ],
+                400,
+            ); // Return a 400 Bad Request status
+        }
+
         if (isset($cart[$id])) {
             $cart[$id]++;
         } else {
             $cart[$id] = 1;
         }
-
-
 
         session()->put('cart', $cart);
 
@@ -91,10 +100,13 @@ class OrderController extends Controller
         // Validasi stok produk
         foreach ($products as $product) {
             if ($product->stock < $cart[$product->id]) {
-                return response()->json([
-                    'success' => false,
-                    'message' => 'Not enough stock for product: ' . $product->name,
-                ], 400);
+                return response()->json(
+                    [
+                        'success' => false,
+                        'message' => 'Not enough stock for product: ' . $product->name,
+                    ],
+                    400,
+                );
             }
         }
 

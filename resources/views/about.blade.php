@@ -1,5 +1,9 @@
-<x-layout>
-  <x-slot:title>{{ $title }}</x-slot:title>
+<x-app-layout>
+      <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __($title) }}
+        </h2>
+    </x-slot>
   <div class="bg-white py-24 sm:py-32">
     <div class="mx-auto grid max-w-7xl gap-20 px-6 lg:px-8 xl:grid-cols-3">
       <div class="max-w-xl">
@@ -65,4 +69,4 @@
       </ul>
     </div>
   </div>
-</x-layout>
+</x-app-layout>

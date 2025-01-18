@@ -1,8 +1,12 @@
-<x-layout>
-    <x-slot:title>{{ $title }}</x-slot:title>
+<x-app-layout>
+        <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __($title) }}
+        </h2>
+    </x-slot>
 
-    <section>
-        <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+    <section class="bg-gray-100">
+        <div class="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 bg-gray-100">
             <div class="mx-auto max-w-3xl">
                 <header class="text-center">
                     <h1 class="text-xl font-bold text-gray-900 sm:text-3xl">Your Cart</h1>
@@ -260,4 +264,4 @@
             });
         }
     </script>
-</x-layout>
+</x-app-layout>
