@@ -17,23 +17,26 @@ class ProductSeeder extends Seeder
         // Data dummy produk
         $products = [
             [
+                'category_id' => 1,
                 'name' => 'Man Shirt',
                 'description' => 'A stylish shirt for men.',
-                'price' => 29.99,
+                'price' => 200000,
                 'stock' => 50,
                 'image' => 'products/man.jpg',
             ],
             [
+                'category_id' => 2,
                 'name' => 'Woman Dress',
                 'description' => 'An elegant dress for women.',
-                'price' => 49.99,
+                'price' => 200000,
                 'stock' => 30,
                 'image' => 'products/woman.jpg',
             ],
             [
+                'category_id' => 3,
                 'name' => 'Kids Jacket',
                 'description' => 'A warm jacket for kids.',
-                'price' => 39.99,
+                'price' => 300000,
                 'stock' => 40,
                 'image' => 'products/kids.jpg',
             ],

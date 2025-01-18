@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,17 @@ class ProductController extends Controller
     {
         $title = 'Home';
         $products = Product::all();
-        return view('home', compact(['products', 'title']));
+        $categories = Category::all();
+        return view('home', compact(['products', 'title', 'categories']));
+    }
+
+    public function getCategory($id)
+    {
+        $category = Category::findOrFail($id);
+        $title = "Category " . $category->name;
+        $products = Product::where('category_id', $category->id)->get();
+
+        return view('category', compact(['products', 'title', 'category']));
     }
 
     public function store(Request $request)

@@ -17,7 +17,7 @@
                                 <div>
                                     <h4 class="text-sm text-gray-900">{{ $item->product->name }}</h4>
                                     <p class="text-xs text-gray-600">Quantity: {{ $item->quantity }}</p>
-                                    <p class="text-xs text-gray-600">Price: ${{ $item->price }}</p>
+                                    <p class="text-xs text-gray-600">Price: IDR {{ number_format($item->price, 0, ',', '.'); }}</p>
                                 </div>
                             </div>
                         @endforeach
@@ -29,15 +29,17 @@
                         <dl class="mt-2 space-y-2 text-sm text-gray-700">
                             <div class="flex justify-between">
                                 <dt>Subtotal</dt>
-                                <dd>${{ $order->total_price }}</dd>
+                                <dd>IDR {{ number_format($order->total_price, 0, ',', '.'); }}</dd>
                             </div>
+
                             <div class="flex justify-between">
-                                <dt>VAT (10%)</dt>
-                                <dd>${{ number_format($order->total_price * 0.1, 2) }}</dd>
+                                <dt>VAT</dt>
+                                <dd>IDR {{ number_format($order->total_price * 0.1, 0, ',', '.') }}</dd>
                             </div>
-                            <div class="flex justify-between">
+
+                            <div class="flex justify-between !text-base font-medium">
                                 <dt>Total</dt>
-                                <dd>${{ number_format($order->total_price * 1.1, 2) }}</dd>
+                                <dd>IDR {{ number_format($order->total_price * 1.1, 0, ',', '.') }}</dd>
                             </div>
                         </dl>
                     </div>

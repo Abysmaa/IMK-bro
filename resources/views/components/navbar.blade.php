@@ -3,7 +3,7 @@
       <div class="flex h-16 items-center justify-between">
         <div class="flex items-center">
           <div class="shrink-0">
-            <img class="size-8" src="img/z.png" alt="Your Company">
+            <img class="size-8" src="{{ asset('img/z.png') }}" alt="Your Company">
           </div>
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
@@ -11,7 +11,7 @@
               <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
               <x-nav-link href="/cart" :active="request()->is('cart')">Cart</x-nav-link>
               <x-nav-link href="/inbox" :active="request()->is('inbox')">Size Chart</x-nav-link>
-              <x-nav-link href="/notification" :active="request()->is('notification')">Notification</x-nav-link>
+              <x-nav-link href="/notification" :active="request()->is('notification')">About</x-nav-link>
               
             </div>
           </div>

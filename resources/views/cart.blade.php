@@ -21,7 +21,7 @@
                                     <dl class="mt-0.5 space-y-px text-[10px] text-gray-600">
                                         <div>
                                             <dt class="inline">Price:</dt>
-                                            <dd class="inline">${{ $product->price }}</dd>
+                                            <dd class="inline">IDR {{ number_format($product->price, 0, ',', '.'); }}</dd>
                                         </div>
 
                                         <div>
@@ -65,17 +65,17 @@
                                     <dl class="space-y-0.5 text-sm text-gray-700">
                                         <div class="flex justify-between">
                                             <dt>Subtotal</dt>
-                                            <dd>${{ $total }}</dd>
+                                            <dd>IDR {{ number_format($total, 0, ',', '.'); }}</dd>
                                         </div>
 
                                         <div class="flex justify-between">
                                             <dt>VAT</dt>
-                                            <dd>${{ number_format($total * 0.1, 2) }}</dd>
+                                            <dd>IDR {{ number_format($total * 0.1, 0, ',', '.') }}</dd>
                                         </div>
 
                                         <div class="flex justify-between !text-base font-medium">
                                             <dt>Total</dt>
-                                            <dd>${{ number_format($total * 1.1, 2) }}</dd>
+                                            <dd>IDR {{ number_format($total * 1.1, 0, ',', '.') }}</dd>
                                         </div>
                                     </dl>
                                 </dl>
